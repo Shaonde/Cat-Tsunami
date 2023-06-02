@@ -20,10 +20,10 @@ public class CharacterController : MonoBehaviour
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            _rb.velocity = Vector3.up * JumpForce * Time.deltaTime;
+            _rb.velocity = Vector3.up * JumpForce;
         }
 
-        if(Input.GetButtonDown("Fire1") && isJumping)
+        if(Input.GetButton("Fire1") && isJumping)
         {
             if(jumpTimeCounter > 0)
             {
