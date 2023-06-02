@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] float JumpForce = 5f;
-    [SerializeField] float jumpTime = 2f;
+    [SerializeField] float jumpTime = 5f;
     float jumpTimeCounter;
     private Rigidbody _rb;
     private RaycastHit _hit;
