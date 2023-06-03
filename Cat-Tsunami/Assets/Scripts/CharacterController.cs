@@ -21,6 +21,12 @@ public class CharacterController : MonoBehaviour
         AddPoto();
     }
 
+    void Death()
+    {
+        PlayerPrefs.SetInt("score",PlateformeStart.Instance.Score);
+        SceneManager.LoadScene(2);
+    }
+
     void JumpToPotos()
     {
         for(int i = 0; i<Potos.Count; i++)
@@ -38,7 +44,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         if(Input.GetButtonDown("Fire1")
-        && Physics.Raycast(transform.position,Vector3.down,out _hit,1f,LayerMask.GetMask("Ground")))
+        && Physics.Raycast(transform.position,Vector3.down,out _hit,1.5f,LayerMask.GetMask("Ground")))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
@@ -65,8 +71,38 @@ public class CharacterController : MonoBehaviour
             StopJumpToPotos();
         }
 
+        if(transform.position.y <= -5)
+            Death();
+
     }
 
-    public void AddPoto() => Potos.Add(Instantiate(PotoPrefab.gameObject,new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
+    public void AddPoto()
+    {
+        if(Potos.Count < 5)
+            Potos.Add(Instantiate(PotoPrefab.gameObject,new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
+    }
+
+    public void DeletePoto()
+    {
+        if(Potos.Count > 0)
+        {
+            Destroy(Potos[Potos.Count-1].gameObject);
+            Potos.RemoveAt(Potos.Count-1);
+            return;
+        }
+        Death();
+    }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Heal"))
+        {
+            AddPoto();
+            PlateformeStart.Instance.Bonus();
+            return;  
+        }
+
+        DeletePoto();
+    }
 
 }

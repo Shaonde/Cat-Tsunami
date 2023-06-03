@@ -29,6 +29,8 @@ public class PotoController : MonoBehaviour
                 isJumping = false;
             }
         }
+        if(transform.position.y <= -5)
+            _player.DeletePoto();
     }
 
     public void StartJump()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6968899179413366519}
   - component: {fileID: 1144990812673188134}
   - component: {fileID: 3503102048551078522}
+  - component: {fileID: 1938666025634766059}
   m_Layer: 0
   m_Name: PropsBad
   m_TagString: Untagged
@@ -97,3 +98,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1938666025634766059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165359707623077341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b2bc7bb42cfa84a8a4a63142ca46f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

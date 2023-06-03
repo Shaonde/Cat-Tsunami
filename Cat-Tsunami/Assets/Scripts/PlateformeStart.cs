@@ -7,6 +7,7 @@ public class PlateformeStart : MonoBehaviour
     [SerializeField] GameObject[] ToSpawn;
     [SerializeField] float InitSpeed = 5f;
     [SerializeField] float DistanceToJump = 3f;
+    [SerializeField] ScoreInGame Scoreur;
     public static PlateformeStart Instance;
     private List<GameObject> plateformes;
     private float _speed;
@@ -16,6 +17,7 @@ public class PlateformeStart : MonoBehaviour
     {
         get => plateformes[plateformes.Count-1];
     }
+    public int Score {get; private set;}
 
     public float GetActualSpeed() => _speed;
 
@@ -24,7 +26,10 @@ public class PlateformeStart : MonoBehaviour
         if(Instance is null)
             Instance = this;
         else
-            Destroy(this);
+        {
+            Destroy(Instance);
+            Instance = this;            
+        }
 
         _speed = InitSpeed;
         plateformes = new List<GameObject>();
@@ -43,6 +48,12 @@ public class PlateformeStart : MonoBehaviour
         {
             item.GetComponent<Rigidbody>().velocity = Vector3.left * _speed;
         }
+    }
+
+    public void Bonus() 
+    {
+        Score+=3;
+        Scoreur.Change(Score);
     }
     public void SelectNext() => NextIndex = Random.Range(0,ToSpawn.Length);
 
@@ -76,6 +87,8 @@ public class PlateformeStart : MonoBehaviour
             _speed += .5f;
             SetSpeed();
             DistanceToJump += .5f;
+            Score++;
+            Scoreur.Change(Score);
         }
         
     }

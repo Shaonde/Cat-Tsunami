@@ -54,7 +54,7 @@ public class PlateformeController : MonoBehaviour
             case PlatType.OneNice:
                 spawned1 = Instantiate(GoodThings[UnityEngine.Random.Range(0,GoodThings.Length)],
                 transform,true);
-                spawned1.transform.position = transform.GetChild(UnityEngine.Random.Range(1,transform.childCount-1)).position;
+                spawned1.transform.position = transform.GetChild(UnityEngine.Random.Range(2,transform.childCount-1)).position;
 
                 break;
             
@@ -62,9 +62,9 @@ public class PlateformeController : MonoBehaviour
                 if(transform.childCount == 5)
                 {
                     int aa = UnityEngine.Random.Range(2,transform.childCount-1);
-                    int bb = UnityEngine.Random.Range(1,transform.childCount-1);
+                    int bb = UnityEngine.Random.Range(2,transform.childCount-1);
                     while (bb==aa)
-                        bb = UnityEngine.Random.Range(1,transform.childCount-1);
+                        bb = UnityEngine.Random.Range(2,transform.childCount-1);
                     
 
                     spawned1 = Instantiate(BadThings[UnityEngine.Random.Range(0,BadThings.Length)],
