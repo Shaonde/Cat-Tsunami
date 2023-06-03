@@ -1,9 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] float JumpForce = 5f;
     [SerializeField] float jumpTime = 5f;
+    [SerializeField] PotoController PotoPrefab;
+    private List<PotoController> Potos;
     float jumpTimeCounter;
     private Rigidbody _rb;
     private RaycastHit _hit;
@@ -11,6 +15,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        AddPoto();
     }
 
     void Update()
@@ -39,4 +44,7 @@ public class CharacterController : MonoBehaviour
         if(Input.GetButtonUp("Fire1"))
             isJumping = false;
     }
+
+    public void AddPoto() => Potos.Add(Instantiate(PotoPrefab.gameObject,new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
+
 }

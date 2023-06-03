@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,10 +36,19 @@ public class PlateformeStart : MonoBehaviour
         }
         SelectNext();
     }
+
+    void SetSpeed()
+    {
+        foreach (GameObject item in plateformes)
+        {
+            item.GetComponent<Rigidbody>().velocity = Vector3.left * _speed;
+        }
+    }
     public void SelectNext() => NextIndex = Random.Range(0,ToSpawn.Length-1);
 
-    public void DeletePlat(GameObject plats)
+    public IEnumerator DeletePlat(GameObject plats)
     {
+        yield return new WaitForSeconds(5f);
         plateformes.Remove(plats);
         Destroy(plats.gameObject);
     }
@@ -62,18 +72,11 @@ public class PlateformeStart : MonoBehaviour
             plateformes.Add(spawned);
             spawned.GetComponent<Rigidbody>().velocity = Vector3.left * _speed;
             SelectNext();
-            _speed += .1f;
+            StartCoroutine(DeletePlat(spawned));
+            _speed += .5f;
+            SetSpeed();
         }
         
-        if(TimeBtwCheck <= 0) //TODO: remplacer ça par une coroutine
-        {
-            foreach (GameObject item in plateformes)
-            {
-                if(Vector3.Distance(item.transform.position, transform.position) >= 80f)
-                    DeletePlat(item);
-            }
-            TimeBtwCheck = 1;
-        }
-        TimeBtwCheck -= Time.deltaTime;
     }
+
 }
