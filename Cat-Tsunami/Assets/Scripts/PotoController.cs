@@ -4,15 +4,42 @@ using UnityEngine;
 
 public class PotoController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private CharacterController _player;
+    float jumpTimeCounter;
+    private Rigidbody _rb;
+    private RaycastHit _hit;
+    bool isJumping;
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(isJumping)
+        {
+            if(jumpTimeCounter > 0)
+            {
+                _rb.velocity = Vector3.up * _player.JumpForce;
+                jumpTimeCounter -= Time.deltaTime;
+            }
+            else
+            {
+                isJumping = false;
+            }
+        }
+    }
+
+    public void StartJump()
+    {
+        isJumping = true;
+        jumpTimeCounter = _player.jumpTime;
+        _rb.velocity = Vector3.up * _player.JumpForce;
+    }
+
+    public void StopJump()
+    {
+        isJumping = false;
     }
 }

@@ -11,13 +11,13 @@ public class PlateformeStart : MonoBehaviour
     private List<GameObject> plateformes;
     private float _speed;
 
-    private int NextIndex;
-    private float TimeBtwCheck = 1;
-    
+    private int NextIndex;    
     private GameObject LastSpawned
     {
         get => plateformes[plateformes.Count-1];
     }
+
+    public float GetActualSpeed() => _speed;
 
     void Awake()
     {
