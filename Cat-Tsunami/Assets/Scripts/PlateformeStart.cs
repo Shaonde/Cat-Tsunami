@@ -6,7 +6,7 @@ public class PlateformeStart : MonoBehaviour
 {
     [SerializeField] GameObject[] ToSpawn;
     [SerializeField] float InitSpeed = 5f;
-    [SerializeField] float DistanceToJump = 5f;
+    [SerializeField] float DistanceToJump = 3f;
     public static PlateformeStart Instance;
     private List<GameObject> plateformes;
     private float _speed;
@@ -48,19 +48,19 @@ public class PlateformeStart : MonoBehaviour
 
     public IEnumerator DeletePlat(GameObject plats)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         plateformes.Remove(plats);
         Destroy(plats.gameObject);
     }
 
     private bool IsDistanceGood()
     {
-        float a = LastSpawned.transform.position.x+(LastSpawned.transform.localScale.x/2);
+        float a = LastSpawned.transform.position.x+(LastSpawned.transform.GetChild(0).localScale.x/2);
 
         if(a >= transform.position.x)
             return false;
 
-        float b = transform.position.x-(ToSpawn[NextIndex].transform.localScale.x/2);
+        float b = transform.position.x-(ToSpawn[NextIndex].transform.GetChild(0).localScale.x/2);
         return (b-a) >= DistanceToJump;
     }
 
@@ -75,6 +75,7 @@ public class PlateformeStart : MonoBehaviour
             StartCoroutine(DeletePlat(spawned));
             _speed += .5f;
             SetSpeed();
+            DistanceToJump += .5f;
         }
         
     }
