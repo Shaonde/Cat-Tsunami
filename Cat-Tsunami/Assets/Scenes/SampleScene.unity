@@ -349,7 +349,6 @@ MonoBehaviour:
   - {fileID: 885388229986962684, guid: c0a617d8cfa30db479d9fda63ef3c6b3, type: 3}
   InitSpeed: 5
   DistanceToJump: 4.5
-  PotoPrefab: {fileID: 0}
 --- !u!1001 &885388228933455191
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,7 +374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 885388229986962680, guid: c0a617d8cfa30db479d9fda63ef3c6b3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 885388229986962680, guid: c0a617d8cfa30db479d9fda63ef3c6b3, type: 3}
       propertyPath: m_LocalPosition.y

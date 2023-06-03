@@ -7,7 +7,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float JumpForce = 5f;
     [SerializeField] float jumpTime = 5f;
     [SerializeField] PotoController PotoPrefab;
-    private List<PotoController> Potos;
+    private List<PotoController> Potos = new List<PotoController>();
     float jumpTimeCounter;
     private Rigidbody _rb;
     private RaycastHit _hit;
@@ -15,7 +15,6 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        AddPoto();
     }
 
     void Update()
