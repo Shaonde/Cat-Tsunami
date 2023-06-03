@@ -44,7 +44,7 @@ public class PlateformeStart : MonoBehaviour
             item.GetComponent<Rigidbody>().velocity = Vector3.left * _speed;
         }
     }
-    public void SelectNext() => NextIndex = Random.Range(0,ToSpawn.Length-1);
+    public void SelectNext() => NextIndex = Random.Range(0,ToSpawn.Length);
 
     public IEnumerator DeletePlat(GameObject plats)
     {
@@ -61,7 +61,7 @@ public class PlateformeStart : MonoBehaviour
             return false;
 
         float b = transform.position.x-(ToSpawn[NextIndex].transform.localScale.x/2);
-        return Mathf.Abs(b-a) >= DistanceToJump;
+        return (b-a) >= DistanceToJump;
     }
 
     void Update()

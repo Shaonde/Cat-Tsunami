@@ -347,6 +347,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToSpawn:
   - {fileID: 885388229986962684, guid: c0a617d8cfa30db479d9fda63ef3c6b3, type: 3}
+  - {fileID: 885388229986962684, guid: 1a2c3c2b9b1b8f440a05edcd3d8de5fd, type: 3}
+  - {fileID: 885388229986962684, guid: 2feec3494df926a488693f10fc2ca7d0, type: 3}
   InitSpeed: 5
   DistanceToJump: 4.5
 --- !u!1001 &885388228933455191
