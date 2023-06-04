@@ -59,7 +59,7 @@ public class PlateformeStart : MonoBehaviour
 
     public IEnumerator DeletePlat(GameObject plats)
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(15f);
         plateformes.Remove(plats);
         Destroy(plats.gameObject);
     }
@@ -84,9 +84,9 @@ public class PlateformeStart : MonoBehaviour
             spawned.GetComponent<Rigidbody>().velocity = Vector3.left * _speed;
             SelectNext();
             StartCoroutine(DeletePlat(spawned));
-            _speed += .5f;
+            _speed += .3f;
             SetSpeed();
-            DistanceToJump += .5f;
+            DistanceToJump += .3f;
             Score++;
             Scoreur.Change(Score);
         }
