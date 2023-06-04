@@ -24,22 +24,22 @@ public class PlateformeController : MonoBehaviour
         switch(_type)
         {
             case PlatType.OneBad:
-                if(transform.childCount == 5)
+                if(transform.childCount == 6)
                 {
                     spawned1 = Instantiate(BadThings[UnityEngine.Random.Range(0,BadThings.Length)],
                     transform, true);
-                    int aaa = UnityEngine.Random.Range(2,transform.childCount-2);
+                    int aaa = UnityEngine.Random.Range(3,transform.childCount-2);
                     spawned1.transform.position = transform.GetChild(aaa).position;
                 }
                 break;
             
             case PlatType.TwoBad:
-                if(transform.childCount == 5)
+                if(transform.childCount == 6)
                 {
-                    int a = UnityEngine.Random.Range(2,transform.childCount-1);
-                    int b = UnityEngine.Random.Range(2,transform.childCount-1);
+                    int a = UnityEngine.Random.Range(3,transform.childCount-1);
+                    int b = UnityEngine.Random.Range(3,transform.childCount-1);
                     while (b==a)
-                        b = UnityEngine.Random.Range(2,transform.childCount-1);
+                        b = UnityEngine.Random.Range(3,transform.childCount-1);
 
                     spawned1 = Instantiate(BadThings[UnityEngine.Random.Range(0,BadThings.Length)],
                     transform,true);
@@ -54,17 +54,17 @@ public class PlateformeController : MonoBehaviour
             case PlatType.OneNice:
                 spawned1 = Instantiate(GoodThings[UnityEngine.Random.Range(0,GoodThings.Length)],
                 transform,true);
-                spawned1.transform.position = transform.GetChild(UnityEngine.Random.Range(2,transform.childCount-1)).position;
+                spawned1.transform.position = transform.GetChild(UnityEngine.Random.Range(3,transform.childCount-1)).position;
 
                 break;
             
             case PlatType.OneNiceOneBad:
-                if(transform.childCount == 5)
+                if(transform.childCount == 6)
                 {
-                    int aa = UnityEngine.Random.Range(2,transform.childCount-1);
-                    int bb = UnityEngine.Random.Range(2,transform.childCount-1);
+                    int aa = UnityEngine.Random.Range(3,transform.childCount-1);
+                    int bb = UnityEngine.Random.Range(3,transform.childCount-1);
                     while (bb==aa)
-                        bb = UnityEngine.Random.Range(2,transform.childCount-1);
+                        bb = UnityEngine.Random.Range(3,transform.childCount-1);
                     
 
                     spawned1 = Instantiate(BadThings[UnityEngine.Random.Range(0,BadThings.Length)],
