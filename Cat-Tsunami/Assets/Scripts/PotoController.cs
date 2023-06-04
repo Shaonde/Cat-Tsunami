@@ -44,4 +44,9 @@ public class PotoController : MonoBehaviour
     {
         isJumping = false;
     }
+
+    public void DieAnim()
+    {
+        //TODO: Evrard, fait un truc
+    }
 }

@@ -7,7 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     public float JumpForce = 7f;
     public float jumpTime = 0.3f;
-    [SerializeField] PotoController PotoPrefab;
+    [SerializeField] PotoController[] PotoPrefab;
     [SerializeField] GameObject partYes;
     [SerializeField] GameObject partNo;
     private List<PotoController> Potos = new List<PotoController>();
@@ -82,12 +82,17 @@ public class CharacterController : MonoBehaviour
 
     }
 
+    private GameObject SelectRandomPoto()
+    {
+        return PotoPrefab[Random.Range(0,PotoPrefab.Length)].gameObject;
+    }
+
     public void AddPoto()
     {
         if (Potos.Count < 5)
         {
             animator.SetTrigger("Paint");
-            Potos.Add(Instantiate(PotoPrefab.gameObject,new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
+            Potos.Add(Instantiate(SelectRandomPoto(),new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
         }
     }
 
@@ -95,7 +100,8 @@ public class CharacterController : MonoBehaviour
     {
         if(Potos.Count > 0)
         {
-            Destroy(Potos[Potos.Count-1].gameObject);
+            Potos[Potos.Count-1].DieAnim();
+            Destroy(Potos[Potos.Count-1].gameObject,1f);
             Potos.RemoveAt(Potos.Count-1);
             return;
         }
