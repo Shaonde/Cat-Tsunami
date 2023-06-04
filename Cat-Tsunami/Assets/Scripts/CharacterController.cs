@@ -8,6 +8,8 @@ public class CharacterController : MonoBehaviour
     public float JumpForce = 7f;
     public float jumpTime = 0.3f;
     [SerializeField] PotoController PotoPrefab;
+    [SerializeField] GameObject partYes;
+    [SerializeField] GameObject partNo;
     private List<PotoController> Potos = new List<PotoController>();
     float jumpTimeCounter;
     private Rigidbody _rb;
@@ -106,8 +108,10 @@ public class CharacterController : MonoBehaviour
         {
             AddPoto();
             PlateformeStart.Instance.Bonus();
+            Instantiate(partYes,transform.position,Quaternion.identity);
             return;  
         }
+        Instantiate(partNo,transform.position,Quaternion.identity);
 
         DeletePoto();
     }

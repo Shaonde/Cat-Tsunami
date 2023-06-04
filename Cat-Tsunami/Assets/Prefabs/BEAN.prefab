@@ -132,6 +132,8 @@ MonoBehaviour:
   JumpForce: 7
   jumpTime: 0.3
   PotoPrefab: {fileID: 2443890348830167549, guid: 61f678760cffbd044b26f60412f66d18, type: 3}
+  partYes: {fileID: 4976663747414001057, guid: 9f1c7c1da28b58a4d96f247858dc57b5, type: 3}
+  partNo: {fileID: 4976663747414001057, guid: 1630a088cdf26b94d8679dd3835c689c, type: 3}
 --- !u!1001 &8012115303752048658
 PrefabInstance:
   m_ObjectHideFlags: 0
