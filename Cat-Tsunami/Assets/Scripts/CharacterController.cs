@@ -13,8 +13,11 @@ public class CharacterController : MonoBehaviour
     private Rigidbody _rb;
     private RaycastHit _hit;
     bool isJumping;
+    private Animator animator;
+    
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody>();
         AddPoto();
         AddPoto();
@@ -43,6 +46,7 @@ public class CharacterController : MonoBehaviour
     }
     void Update()
     {
+        animator.SetBool("isJumping" ,isJumping);
         if(Input.GetButtonDown("Fire1")
         && Physics.Raycast(transform.position,Vector3.down,out _hit,1.5f,LayerMask.GetMask("Ground")))
         {
@@ -78,8 +82,11 @@ public class CharacterController : MonoBehaviour
 
     public void AddPoto()
     {
-        if(Potos.Count < 5)
+        if (Potos.Count < 5)
+        {
+            animator.SetTrigger("Paint");
             Potos.Add(Instantiate(PotoPrefab.gameObject,new Vector3(transform.position.x-(1.5f*(Potos.Count+1)),transform.position.y,transform.position.z),Quaternion.identity).GetComponent<PotoController>());
+        }
     }
 
     public void DeletePoto()
